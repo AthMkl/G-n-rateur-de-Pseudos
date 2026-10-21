@@ -1,3 +1,442 @@
+<nav class="flex items-center space-x-4">
+    <span class="text-sm font-semibold text-brand-500 border-b-2 border-brand-500 pb-1"><i class="fa-solid fa-gamepad mr-1"></i> Pseudos</span>
+    <a href="compteur-de-mots.html" class="text-sm font-medium text-slate-300 hover:text-brand-500 transition"><i class="fa-solid fa-align-left mr-1"></i> Compteur de mots</a>
+</nav>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5866310414065719"
+     crossorigin="anonymous"></script>
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Pseudos Stylés & Originaux - WebTools Hub</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d',
+                        },
+                        darkbg: '#0f172a',
+                        cardbg: '#1e293b'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-white">
+
+    <!-- Header / Navigation -->
+    <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-brand-500 p-2 rounded-xl text-slate-950 font-bold">
+                    <i class="fa-solid fa-wand-magic-sparkles text-xl"></i>
+                </div>
+                <div>
+                    <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-brand-500 to-emerald-400 bg-clip-text text-transparent">WebTools</span>
+                    <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-semibold ml-1">HUB</span>
+                </div>
+            </div>
+            <nav class="flex items-center space-x-4">
+                <span class="text-xs text-slate-400 hidden sm:inline-block"><i class="fa-solid fa-shield-halved text-brand-500 mr-1"></i> 100% Gratuit</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- AdSense Top Banner Placeholder -->
+    <div class="max-w-7xl mx-auto px-4 mt-6 w-full">
+        <div class="bg-slate-800/50 border border-dashed border-slate-700 rounded-xl p-3 text-center text-xs text-slate-500 min-h-[90px] flex flex-col items-center justify-center">
+            <span class="font-semibold text-slate-400 mb-1"><i class="fa-rectangle-ad mr-1"></i> Espace Publicitaire (Google AdSense)</span>
+            <span>Insérez votre code &lt;ins class="adsbygoogle"&gt; ici</span>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Left & Center Column: Main Generator Tool -->
+        <div class="lg:col-span-2 space-y-6">
+            
+            <!-- Tool Header Card -->
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-6 sm:p-8 backdrop-blur shadow-xl">
+                <div class="flex items-center space-x-3 mb-2">
+                    <span class="bg-brand-500/10 text-brand-500 text-xs font-semibold px-3 py-1 rounded-full border border-brand-500/20">Outil Gratuit</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-bolt text-yellow-400 mr-1"></i> Instantané</span>
+                </div>
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">Générateur de Pseudos Stylés</h1>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Créez des pseudonymes uniques et originaux pour vos jeux vidéo, comptes de réseaux sociaux, chaînes YouTube, Discord ou mangas.
+                </p>
+
+                <!-- Generator Controls -->
+                <div class="mt-8 space-y-6">
+                    
+                    <!-- Mode Switch: Algorithmique vs IA Gemini -->
+                    <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-700/80">
+                        <button id="mode-algo-btn" onclick="setMode('algo')" class="flex-1 py-2 rounded-lg text-sm font-medium transition-all duration-200 bg-brand-500 text-slate-950 font-semibold shadow">
+                            <i class="fa-solid fa-dice mr-2"></i> Mode Rapide (Algorithme)
+                        </button>
+                        <button id="mode-ai-btn" onclick="setMode('ai')" class="flex-1 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-slate-400 hover:text-white">
+                            <i class="fa-solid fa-brain mr-2"></i> Mode IA (Gemini)
+                        </button>
+                    </div>
+
+                    <!-- Theme Selection -->
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
+                            1. Choisissez un thème
+                        </label>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <button type="button" onclick="selectTheme('fantasy')" class="theme-btn p-3 rounded-xl border border-brand-500 bg-brand-500/10 text-white text-sm font-medium flex items-center justify-between transition-all" data-theme="fantasy">
+                                <span><i class="fa-solid fa-dragon mr-2 text-emerald-400"></i> Médiéval / Fantasy</span>
+                            </button>
+                            <button type="button" onclick="selectTheme('cyberpunk')" class="theme-btn p-3 rounded-xl border border-slate-700 bg-slate-900/50 text-slate-300 hover:text-white text-sm font-medium flex items-center justify-between transition-all" data-theme="cyberpunk">
+                                <span><i class="fa-solid fa-microchip mr-2 text-cyan-400"></i> Cyberpunk / Sci-Fi</span>
+                            </button>
+                            <button type="button" onclick="selectTheme('manga')" class="theme-btn p-3 rounded-xl border border-slate-700 bg-slate-900/50 text-slate-300 hover:text-white text-sm font-medium flex items-center justify-between transition-all" data-theme="manga">
+                                <span><i class="fa-solid fa-mask-cat mr-2 text-pink-400"></i> Manga / Anime</span>
+                            </button>
+                            <button type="button" onclick="selectTheme('esports')" class="theme-btn p-3 rounded-xl border border-slate-700 bg-slate-900/50 text-slate-300 hover:text-white text-sm font-medium flex items-center justify-between transition-all" data-theme="esports">
+                                <span><i class="fa-solid fa-gamepad mr-2 text-purple-400"></i> Gaming / Esports</span>
+                            </button>
+                            <button type="button" onclick="selectTheme('mythic')" class="theme-btn p-3 rounded-xl border border-slate-700 bg-slate-900/50 text-slate-300 hover:text-white text-sm font-medium flex items-center justify-between transition-all" data-theme="mythic">
+                                <span><i class="fa-solid fa-bolt mr-2 text-yellow-400"></i> Mythologique</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Options Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <!-- Complexity / Style -->
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+                                Style de structure
+                            </label>
+                            <select id="complexity-select" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-brand-500 transition">
+                                <option value="simple">Simple (Un seul mot)</option>
+                                <option value="compound" selected>Composé (ex: ShadowBlade)</option>
+                                <option value="leetspeak">Leet Speak (ex: Sh4d0w)</option>
+                            </select>
+                        </div>
+
+                        <!-- Stylizers / Prefixes & Suffixes -->
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+                                Décoration gamer
+                            </label>
+                            <select id="stylizer-select" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-brand-500 transition">
+                                <option value="none">Aucune (Pseudo pur)</option>
+                                <option value="gamer">Gamer (xX_Pseudo_Xx)</option>
+                                <option value="clean">Épuré (_Pseudo, Pseudo_v)</option>
+                                <option value="tag">Clan Tag ([Xx] Pseudo)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Generate Action Button -->
+                    <button id="generate-btn" onclick="generatePseudo()" class="w-full bg-gradient-to-r from-brand-500 to-emerald-600 hover:from-brand-600 hover:to-emerald-700 text-slate-950 font-bold py-4 rounded-xl shadow-lg hover:shadow-brand-500/20 transition duration-200 flex items-center justify-center space-x-2 text-lg">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span id="btn-text">Générer un Pseudo</span>
+                    </button>
+
+                    <!-- Result Box -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 text-center relative overflow-hidden group">
+                        <div class="text-xs uppercase font-semibold text-slate-500 mb-1">Votre Pseudo Généré</div>
+                        <div id="pseudo-output" class="text-2xl sm:text-4xl font-black text-brand-500 tracking-wide py-3 select-all min-h-[3rem] flex items-center justify-center">
+                            Cliquez sur Générer
+                        </div>
+                        
+                        <div class="mt-3 flex items-center justify-center space-x-3">
+                            <button id="copy-btn" onclick="copyToClipboard()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-4 py-2 rounded-lg transition flex items-center space-x-2 border border-slate-700">
+                                <i class="fa-regular fa-copy"></i>
+                                <span id="copy-btn-text">Copier</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SEO Content Section (Crucial for AdSense approval) -->
+            <article class="bg-slate-800/40 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4 text-slate-300 text-sm leading-relaxed">
+                <h2 class="text-lg font-bold text-white flex items-center">
+                    <i class="fa-solid fa-circle-info text-brand-500 mr-2"></i> Comment choisir un bon pseudo pour les jeux vidéo et réseaux sociaux ?
+                </h2>
+                <p>
+                    Un pseudonyme original est votre identité numérique. Que ce soit pour briller sur **League of Legends**, **Valorant**, **Fortnite**, créer une chaîne **Twitch** ou choisir votre nom d'utilisateur sur **Discord** et **TikTok**, votre pseudo doit être mémorable.
+                </p>
+                <h3 class="font-semibold text-white pt-2">Nos conseils pour un pseudo efficace :</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-400">
+                    <li><strong class="text-slate-200">Restez simple :</strong> Évitez les séries de chiffres incompréhensibles.</li>
+                    <li><strong class="text-slate-200">Choisissez une thématique :</strong> Adaptez le style (Cyberpunk, Fantasy, Manga) à votre univers de jeu favori.</li>
+                    <li><strong class="text-slate-200">Soyez original :</strong> Mélangez deux concepts contradictoires (ex: <i>ShadowSpark</i> ou <i>NeonKnight</i>).</li>
+                </ul>
+            </article>
+
+        </div>
+
+        <!-- Right Column: Sidebar (History + Ads) -->
+        <div class="space-y-6">
+
+            <!-- History Box -->
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-6 backdrop-blur">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-bold text-white text-sm flex items-center">
+                        <i class="fa-solid fa-clock-rotate-left text-brand-500 mr-2"></i> Historique (10 derniers)
+                    </h3>
+                    <button onclick="clearHistory()" class="text-xs text-slate-400 hover:text-red-400 transition">Effacer</button>
+                </div>
+                <div id="history-list" class="space-y-2">
+                    <p class="text-xs text-slate-500 text-center py-4">Aucun pseudo généré pour le moment.</p>
+                </div>
+            </div>
+
+            <!-- AdSense Sidebar Banner Placeholder -->
+            <div class="bg-slate-800/50 border border-dashed border-slate-700 rounded-2xl p-4 text-center text-xs text-slate-500 min-h-[250px] flex flex-col items-center justify-center">
+                <span class="font-semibold text-slate-400 mb-1"><i class="fa-rectangle-ad mr-1"></i> Publicité (AdSense)</span>
+                <span>Format Pavé / Carré (300x250)</span>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-brand-500 text-slate-950 px-4 py-3 rounded-xl font-bold shadow-2xl transition duration-300 opacity-0 translate-y-10 pointer-events-none flex items-center space-x-2 z-50">
+        <i class="fa-solid fa-check-circle"></i>
+        <span id="toast-message">Pseudo copié !</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-6 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p>&copy; 2026 WebTools Hub - Tous droits réservés.</p>
+            <div class="flex justify-center space-x-4 text-slate-400">
+                <a href="#" class="hover:text-brand-500 transition">Mentions Légales</a>
+                <span>•</span>
+                <a href="#" class="hover:text-brand-500 transition">Politique de Confidentialité</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Generator Logic -->
+    <script>
+        // Data Dictionaries for Algorithmic Generation
+        const dictionary = {
+            fantasy: {
+                prefixes: ["Aether", "Astra", "Valen", "Draco", "Sylva", "Morg", "Zephyr", "Rune", "Grim", "Thor", "Eldar", "Sol"],
+                suffixes: ["blade", "heart", "weaver", "soul", "forge", "caller", "storm", "shade", "fury", "born", "warden", "lance"]
+            },
+            cyberpunk: {
+                prefixes: ["Neon", "Cyber", "Null", "Byte", "Matrix", "Glitch", "Circuit", "Synapse", "Volt", "Data", "Vapor", "Vortex"],
+                suffixes: ["runner", "grid", "core", "jack", "net", "wire", "hacker", "pulse", "drive", "node", "link", "system"]
+            },
+            manga: {
+                prefixes: ["Kuro", "Shiro", "Kage", "Hikari", "Ryu", "Akira", "Shin", "Yami", "Sora", "Kami", "Ren", "Tora"],
+                suffixes: ["maru", "sama", "san", "blade", "strike", "spirit", "flame", "star", "squad", "soul", "sanctuary", "force"]
+            },
+            esports: {
+                prefixes: ["Apex", "Viper", "Phantom", "Slayer", "Clutch", "Toxic", "Rogue", "Scope", "Flick", "Nitro", "Over", "Hyper"],
+                suffixes: ["god", "king", "pro", "shot", "aim", "beast", "squad", "z", "main", "boss", "hz", "diff"]
+            },
+            mythic: {
+                prefixes: ["Titan", "Olympus", "Valkyrie", "Ares", "Zeus", "Hades", "Phoenix", "Hydra", "Kronos", "Odin", "Loki", "Thor"],
+                suffixes: ["fury", "wrath", "strike", "god", "crest", "guard", "wing", "flame", "realm", "spear", "shield", "throne"]
+            }
+        };
+
+        const leetMap = {
+            'a': '4', 'A': '4',
+            'e': '3', 'E': '3',
+            'i': '1', 'I': '1',
+            'o': '0', 'O': '0',
+            's': '5', 'S': '5',
+            't': '7', 'T': '7'
+        };
+
+        let currentTheme = 'fantasy';
+        let currentMode = 'algo';
+        let history = [];
+
+        function setMode(mode) {
+            currentMode = mode;
+            const algoBtn = document.getElementById('mode-algo-btn');
+            const aiBtn = document.getElementById('mode-ai-btn');
+
+            if (mode === 'algo') {
+                algoBtn.className = "flex-1 py-2 rounded-lg text-sm font-medium transition-all duration-200 bg-brand-500 text-slate-950 font-semibold shadow";
+                aiBtn.className = "flex-1 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-slate-400 hover:text-white";
+            } else {
+                aiBtn.className = "flex-1 py-2 rounded-lg text-sm font-medium transition-all duration-200 bg-brand-500 text-slate-950 font-semibold shadow";
+                algoBtn.className = "flex-1 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-slate-400 hover:text-white";
+            }
+        }
+
+        function selectTheme(theme) {
+            currentTheme = theme;
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                if (btn.dataset.theme === theme) {
+                    btn.className = "theme-btn p-3 rounded-xl border border-brand-500 bg-brand-500/10 text-white text-sm font-medium flex items-center justify-between transition-all";
+                } else {
+                    btn.className = "theme-btn p-3 rounded-xl border border-slate-700 bg-slate-900/50 text-slate-300 hover:text-white text-sm font-medium flex items-center justify-between transition-all";
+                }
+            });
+        }
+
+        function applyLeet(str) {
+            return str.split('').map(char => leetMap[char] || char).join('');
+        }
+
+        function applyStylizer(pseudo, style) {
+            switch (style) {
+                case 'gamer': return `xX_${pseudo}_Xx`;
+                case 'clean': return `_${pseudo}`;
+                case 'tag': return `[x] ${pseudo}`;
+                default: return pseudo;
+            }
+        }
+
+        async function generatePseudo() {
+            const btnText = document.getElementById('btn-text');
+            const output = document.getElementById('pseudo-output');
+            const complexity = document.getElementById('complexity-select').value;
+            const stylizer = document.getElementById('stylizer-select').value;
+
+            output.classList.add('animate-pulse');
+
+            let generated = "";
+
+            if (currentMode === 'algo') {
+                const data = dictionary[currentTheme];
+                const prefix = data.prefixes[Math.floor(Math.random() * data.prefixes.length)];
+                const suffix = data.suffixes[Math.floor(Math.random() * data.suffixes.length)];
+
+                if (complexity === 'simple') {
+                    generated = prefix;
+                } else if (complexity === 'compound') {
+                    generated = prefix + suffix;
+                } else if (complexity === 'leetspeak') {
+                    generated = applyLeet(prefix + suffix);
+                }
+
+                generated = applyStylizer(generated, stylizer);
+
+                setTimeout(() => {
+                    output.innerText = generated;
+                    output.classList.remove('animate-pulse');
+                    addToHistory(generated);
+                }, 150);
+
+            } else {
+                // Mode IA Gemini
+                btnText.innerText = "Génération par l'IA...";
+                output.innerText = "L'IA réfléchit...";
+
+                try {
+                    const prompt = `Génère 1 seul pseudo original, court et très stylé sur le thème "${currentTheme}". Le style demandé est "${complexity}". N'écris rien d'autre que le pseudo.`;
+                    
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: prompt }] }]
+                        })
+                    });
+
+                    const data = await response.json();
+                    let aiPseudo = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || "NovaSpark";
+                    aiPseudo = aiPseudo.replace(/[^a-zA-Z0-9_\-\[\]]/g, ''); // Clean
+                    
+                    if (complexity === 'leetspeak') aiPseudo = applyLeet(aiPseudo);
+                    aiPseudo = applyStylizer(aiPseudo, stylizer);
+
+                    output.innerText = aiPseudo;
+                    addToHistory(aiPseudo);
+                } catch (e) {
+                    console.error(e);
+                    output.innerText = "Erreur IA (Repli) -> " + applyStylizer("CyberViper", stylizer);
+                } finally {
+                    btnText.innerText = "Générer un Pseudo";
+                    output.classList.remove('animate-pulse');
+                }
+            }
+        }
+
+        function addToHistory(pseudo) {
+            if (!pseudo) return;
+            history.unshift(pseudo);
+            if (history.length > 10) history.pop();
+
+            const historyList = document.getElementById('history-list');
+            historyList.innerHTML = history.map(item => `
+                <div class="flex items-center justify-between bg-slate-900 border border-slate-800 p-2.5 rounded-xl text-xs group hover:border-brand-500/50 transition">
+                    <span class="font-mono text-slate-200">${item}</span>
+                    <button onclick="copySpecific('${item}')" class="text-slate-400 hover:text-brand-500 transition px-2 py-1">
+                        <i class="fa-regular fa-copy"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function clearHistory() {
+            history = [];
+            document.getElementById('history-list').innerHTML = '<p class="text-xs text-slate-500 text-center py-4">Aucun pseudo généré pour le moment.</p>';
+        }
+
+        function copyToClipboard() {
+            const pseudo = document.getElementById('pseudo-output').innerText;
+            if (!pseudo || pseudo === "Cliquez sur Générer") return;
+            copySpecific(pseudo);
+        }
+
+        function copySpecific(text) {
+            // Utilisation d'un élément temporaire pour compatibilité iframe
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            showToast(`"${text}" copié !`);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = message;
+            toast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            }, 2500);
+        }
+
+        // Première génération au chargement
+        window.onload = function() {
+            generatePseudo();
+        };
+    </script>
+</body>
+</html>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5866310414065719"
      crossorigin="anonymous"></script>
 <!DOCTYPE html>
