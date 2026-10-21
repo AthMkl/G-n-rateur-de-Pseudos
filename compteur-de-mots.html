@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compteur de Mots et Caractères Gratuit en Ligne - WebTools Hub</title>
+    
+    <!-- Code Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5866310414065719" crossorigin="anonymous"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navigation -->
+    <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="bg-brand-500 p-2 rounded-xl text-slate-950 font-bold">
+                        <i class="fa-solid fa-wand-magic-sparkles text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-brand-500 to-emerald-400 bg-clip-text text-transparent">WebTools</span>
+                        <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-semibold ml-1">HUB</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="flex items-center space-x-4">
+                <a href="index.html" class="text-sm font-medium text-slate-300 hover:text-brand-500 transition"><i class="fa-solid fa-gamepad mr-1"></i> Pseudos</a>
+                <span class="text-sm font-semibold text-brand-500 border-b-2 border-brand-500 pb-1"><i class="fa-solid fa-align-left mr-1"></i> Compteur de mots</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- AdSense Top Banner -->
+    <div class="max-w-7xl mx-auto px-4 mt-6 w-full">
+        <div class="bg-slate-800/50 border border-dashed border-slate-700 rounded-xl p-3 text-center text-xs text-slate-500 min-h-[90px] flex flex-col items-center justify-center">
+            <span class="font-semibold text-slate-400 mb-1"><i class="fa-rectangle-ad mr-1"></i> Espace Publicitaire (Google AdSense)</span>
+            <span>Insérez votre code &lt;ins class="adsbygoogle"&gt; ici</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Left & Center: Text Editor & Stats -->
+        <div class="lg:col-span-2 space-y-6">
+            
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-6 sm:p-8 backdrop-blur shadow-xl">
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">Compteur de Mots et Caractères</h1>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                    Saisissez ou collez votre texte ci-dessous pour analyser instantanément sa longueur, son temps de lecture et son nombre de mots.
+                </p>
+
+                <!-- Stat Cards Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center">
+                        <div class="text-xs font-semibold text-slate-400 uppercase">Mots</div>
+                        <div id="stat-words" class="text-2xl sm:text-3xl font-black text-brand-500 mt-1">0</div>
+                    </div>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center">
+                        <div class="text-xs font-semibold text-slate-400 uppercase">Caractères</div>
+                        <div id="stat-chars" class="text-2xl sm:text-3xl font-black text-emerald-400 mt-1">0</div>
+                    </div>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center">
+                        <div class="text-xs font-semibold text-slate-400 uppercase">Phrases</div>
+                        <div id="stat-sentences" class="text-2xl sm:text-3xl font-black text-cyan-400 mt-1">0</div>
+                    </div>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center">
+                        <div class="text-xs font-semibold text-slate-400 uppercase">Paragraphes</div>
+                        <div id="stat-paragraphs" class="text-2xl sm:text-3xl font-black text-purple-400 mt-1">0</div>
+                    </div>
+                </div>
+
+                <!-- Textarea Editor -->
+                <div class="space-y-3">
+                    <textarea id="text-input" oninput="analyzeText()" placeholder="Collez ou tapez votre texte ici..." class="w-full h-64 bg-slate-950 border border-slate-700 rounded-xl p-4 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-brand-500 transition resize-y font-sans text-sm sm:text-base leading-relaxed"></textarea>
+                    
+                    <div class="flex items-center justify-between text-xs text-slate-400">
+                        <div>
+                            <i class="fa-solid fa-clock mr-1"></i> Temps de lecture estimé : <span id="stat-readtime" class="font-bold text-slate-200">0 min</span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="clearText()" class="hover:text-red-400 transition bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg"><i class="fa-solid fa-trash mr-1"></i> Effacer</button>
+                            <button onclick="copyText()" class="hover:text-brand-500 transition bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg"><i class="fa-regular fa-copy mr-1"></i> Copier</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO Content Section -->
+            <article class="bg-slate-800/40 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4 text-slate-300 text-sm leading-relaxed">
+                <h2 class="text-lg font-bold text-white flex items-center">
+                    <i class="fa-solid fa-circle-info text-brand-500 mr-2"></i> Pourquoi utiliser un compteur de mots en ligne ?
+                </h2>
+                <p>
+                    Que vous soyez étudiant (rédaction de devoirs ou mémoires), rédacteur web, auteur ou gestionnaire de réseaux sociaux, respecter les limites de caractères est essentiel.
+                </p>
+                <h3 class="font-semibold text-white pt-2">Limites courantes sur le Web :</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-400">
+                    <li><strong class="text-slate-200">X (Twitter) :</strong> 280 caractères maximum.</li>
+                    <li><strong class="text-slate-200">Meta Title Google :</strong> 50 à 60 caractères pour le référencement naturel (SEO).</li>
+                    <li><strong class="text-slate-200">Meta Description Google :</strong> 150 à 160 caractères.</li>
+                    <li><strong class="text-slate-200">LinkedIn :</strong> 3 000 caractères par publication.</li>
+                </ul>
+            </article>
+
+        </div>
+
+        <!-- Right: Sidebar Ads -->
+        <div class="space-y-6">
+            <div class="bg-slate-800/50 border border-dashed border-slate-700 rounded-2xl p-4 text-center text-xs text-slate-500 min-h-[300px] flex flex-col items-center justify-center">
+                <span class="font-semibold text-slate-400 mb-1"><i class="fa-rectangle-ad mr-1"></i> Publicité (AdSense)</span>
+                <span>Format Pavé / Carré (300x250)</span>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-6 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p>&copy; 2026 WebTools Hub - Tous droits réservés.</p>
+            <div class="flex justify-center space-x-4 text-slate-400">
+                <a href="mentions-legales.html" class="hover:text-brand-500 transition">Mentions Légales</a>
+                <span>•</span>
+                <a href="politique-de-confidentialite.html" class="hover:text-brand-500 transition">Politique de Confidentialité</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        function analyzeText() {
+            const text = document.getElementById('text-input').value;
+            
+            // Compter les mots (élimine les espaces multiples)
+            const wordsMatch = text.trim().match(/[\wà-ÿÀ-Ÿ'+-]+/g);
+            const words = wordsMatch ? wordsMatch.length : 0;
+            
+            // Compter les caractères
+            const chars = text.length;
+            
+            // Compter les phrases (. ! ?)
+            const sentencesMatch = text.match(/[^.!?]+[.!?]+/g);
+            const sentences = sentencesMatch ? sentencesMatch.length : (text.trim().length > 0 ? 1 : 0);
+            
+            // Compter les paragraphes
+            const paragraphsMatch = text.split(/\n+/).filter(para => para.trim().length > 0);
+            const paragraphs = paragraphsMatch.length;
+            
+            // Temps de lecture estimé (moyenne : 200 mots / min)
+            const readTime = Math.ceil(words / 200);
+
+            // Mise à jour de l'affichage
+            document.getElementById('stat-words').innerText = words.toLocaleString('fr-FR');
+            document.getElementById('stat-chars').innerText = chars.toLocaleString('fr-FR');
+            document.getElementById('stat-sentences').innerText = sentences.toLocaleString('fr-FR');
+            document.getElementById('stat-paragraphs').innerText = paragraphs.toLocaleString('fr-FR');
+            document.getElementById('stat-readtime').innerText = readTime + " min";
+        }
+
+        function clearText() {
+            document.getElementById('text-input').value = '';
+            analyzeText();
+        }
+
+        function copyText() {
+            const text = document.getElementById('text-input').value;
+            if (!text) return;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Texte copié dans le presse-papier !");
+            });
+        }
+    </script>
+</body>
+</html>
